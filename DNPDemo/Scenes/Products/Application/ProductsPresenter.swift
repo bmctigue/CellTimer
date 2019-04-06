@@ -12,6 +12,11 @@ import Tiguer
 extension Products {
     final class Presenter<Model, ViewModel>: Tiguer.Presenter<Model, ViewModel> {
         
+        typealias ProductViewModel = Products.ViewModel
+        
+        private var filterState: ProductFilterState = .all
+        private lazy var favoritesManager = Products.SelectionManager<Product>()
+        
         public override init(_ models: [Model] = [Model](), main: Dispatching = AsyncQueue.main, background: Dispatching = AsyncQueue.background) {
             super.init(models, main: main, background: background)
         }
@@ -29,11 +34,31 @@ extension Products {
         override func updatedViewModels(completionHandler: @escaping ([ViewModel]) -> Void) {
             background.dispatch { [weak self] in
                 if let self = self {
+                    var resultModels = self.viewModels
+                    
+                    if self.filterState == .connected {
+                        resultModels = resultModels.filter {
+                            let model = $0 as! ProductViewModel
+                            let selections = self.favoritesManager.getSelections()
+                            return selections.contains(model.selectionId)
+                        }
+                    }
                     self.main.dispatch {
                         completionHandler(self.viewModels)
                     }
                 }
             }
         }
+    }
+}
+
+extension Products.Presenter {
+    func filterModelsByState(_ state: ProductFilterState) {
+        self.filterState = state
+        self.updateViewModelsInBackground()
+    }
+    
+    func getFavorites() -> Set<String> {
+        return favoritesManager.getSelections()
     }
 }

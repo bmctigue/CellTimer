@@ -9,9 +9,17 @@
 import UIKit
 
 extension Products {
-    struct ViewModel {
+    struct ViewModel: Equatable {
         let productId: String
         let name: String
         let text: String
+        
+        var selectionId: String {
+            return productId
+        }
+        
+        static func == (lhs: Products.ViewModel, rhs: Products.ViewModel) -> Bool {
+            return lhs.productId == rhs.productId
+        }
     }
 }

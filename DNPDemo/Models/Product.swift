@@ -15,6 +15,8 @@ struct Product: Codable {
     var text: String
 }
 
+
+
 extension Product: Unboxable {
     init(unboxer: Unboxer) throws {
         self.productId = try unboxer.unbox(key: "id")
