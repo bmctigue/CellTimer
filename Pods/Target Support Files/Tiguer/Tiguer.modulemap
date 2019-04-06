@@ -1,0 +1,6 @@
+framework module Tiguer {
+  umbrella header "Tiguer-umbrella.h"
+
+  export *
+  module * { export * }
+}
