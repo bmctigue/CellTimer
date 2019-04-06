@@ -5,6 +5,7 @@ target 'DNPDemo' do
     pod 'Unbox'
     pod 'Promis'
     pod 'Tiguer', :git => 'https://github.com/bmctigue/Tiguer.git'
+    pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 end
 
 target 'DNPDemoTests' do

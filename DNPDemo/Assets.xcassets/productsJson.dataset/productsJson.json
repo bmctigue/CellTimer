@@ -1,0 +1,77 @@
+[
+    {
+        "id": "1",
+        "name": "Bank Free Refunds",
+        "text": "Brilliant.",
+    },
+    {
+        "id": "2",
+        "name": "Free Government & Settlement Money",
+        "text": "Fantastic.",
+    },
+    {
+        "id": "3",
+        "name": "Get Free Prescription Drugs",
+        "text": "Free.",
+    },
+    {
+        "id": "4",
+        "name": "Ridesharing Refunds",
+        "text": "Great refunds.",
+    },
+    {
+        "id": "5",
+        "name": "DoNotPay Phone Network",
+        "text": "Call everyone.",
+    },
+    {
+        "id": "6",
+        "name": "Maximize Privacy Settings",
+        "text": "Tight security.",
+    },
+    {
+        "id": "7",
+        "name": "Travel Price Protection",
+        "text": "Travel for cheap.",
+    },
+    {
+        "id": "8",
+        "name": "Fix Credit Report Errors",
+        "text": "Fix your credit.",
+    },
+    {
+        "id": "9",
+        "name": "Refunds for Late Package Deliveries",
+        "text": "Late packages.",
+    },
+    {
+        "id": "10",
+        "name": "Free Fast Food",
+        "text": "Free food.",
+    },
+    {
+        "id": "11",
+        "name": "DMV Appointment",
+        "text": "Get your license.",
+    },
+    {
+        "id": "12",
+        "name": "Unlimited Visas",
+        "text": "Stay as long as you want.",
+    },
+    {
+        "id": "13",
+        "name": "Parking Tickets",
+        "text": "Fix your parking tickets.",
+    },
+    {
+        "id": "14",
+        "name": "Sue Anyone",
+        "text": "Sue your neighbor.",
+    },
+    {
+        "id": "15",
+        "name": "Appeal College Fees",
+        "text": "Lower your college costs.",
+    }
+]
