@@ -20,6 +20,8 @@ class TOSViewController: UIViewController {
         super.viewDidLoad()
 
         self.containerView.layer.cornerRadius = 8.0
+        self.containerView.layer.borderWidth = 1.0
+        self.containerView.layer.borderColor = FlatGrayDark().cgColor
         self.dismissButton.layer.cornerRadius = 8.0
         self.dismissButton.layer.borderWidth = 1.0
         self.dismissButton.layer.borderColor = FlatGrayDark().cgColor
@@ -31,6 +33,12 @@ class TOSViewController: UIViewController {
         
         Mollis pretium lorem primis senectus habitasse lectus scelerisque donec, ultricies tortor suspendisse adipiscing fusce morbi volutpat pellentesque, consectetur mi risus molestie curae malesuada cum. Dignissim lacus convallis massa mauris enim ad mattis magnis senectus montes, mollis taciti phasellus accumsan bibendum semper blandit suspendisse faucibus nibh est, metus lobortis morbi cras magna vivamus per risus fermentum. Dapibus imperdiet praesent magnis ridiculus congue gravida curabitur dictum sagittis, enim et magna sit inceptos sodales parturient pharetra mollis, aenean vel nostra tellus commodo pretium sapien sociosqu.
         """
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        textView.layoutIfNeeded()
+        textView.contentOffset = CGPoint.zero
     }
     
     @IBAction func dismissButtonPressed(_ sender: Any) {

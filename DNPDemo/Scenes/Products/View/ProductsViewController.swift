@@ -14,9 +14,9 @@ final class ProductsViewController: UIViewController {
     
     @IBOutlet weak var collectionViewContainerView: UIView!
     
-    lazy var connectedButton = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(connectButtonPressed(_:)))
+    lazy var connectedButton = UIBarButtonItem(image: UIImage(named: "connections"), style: .plain, target: self, action: #selector(connectButtonPressed(_:)))
     
-    lazy var infoButton = UIBarButtonItem(image: UIImage(named: "Cog"), style: .plain, target: self, action: #selector(infoButtonPressed(_:)))
+    lazy var infoButton = UIBarButtonItem(image: UIImage(named: "cog"), style: .plain, target: self, action: #selector(infoButtonPressed(_:)))
     
     var filterState: ProductFilterState = .all
     var collectionViewController: ProductsCollectionViewController

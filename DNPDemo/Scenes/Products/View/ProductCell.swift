@@ -33,9 +33,10 @@ class ProductCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.layer.cornerRadius = 8.0
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = FlatBlack().cgColor
-        self.connectButton.backgroundColor = FlatGrayDark()
+        self.layer.borderColor = FlatGrayDark().cgColor
         self.connectButton.layer.cornerRadius = 8.0
+        self.connectButton.layer.borderWidth = 1.0
+        self.connectButton.layer.borderColor = FlatGrayDark().cgColor
     }
     
     @IBAction func connectButtonPressed(_ sender: Any) {
