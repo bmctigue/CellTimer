@@ -15,7 +15,7 @@ extension Products {
         typealias ProductViewModel = Products.ViewModel
         
         private var filterState: ProductFilterState = .all
-        private lazy var favoritesManager = Products.SelectionManager<Product>()
+        private lazy var connectedManager = Products.SelectionManager<Product>()
         
         public override init(_ models: [Model] = [Model](), main: Dispatching = AsyncQueue.main, background: Dispatching = AsyncQueue.background) {
             super.init(models, main: main, background: background)
@@ -39,7 +39,7 @@ extension Products {
                     if self.filterState == .connected {
                         resultModels = resultModels.filter {
                             let model = $0 as! ProductViewModel
-                            let selections = self.favoritesManager.getSelections()
+                            let selections = self.connectedManager.getSelections()
                             return selections.contains(model.selectionId)
                         }
                     }
@@ -58,7 +58,11 @@ extension Products.Presenter {
         self.updateViewModelsInBackground()
     }
     
-    func getFavorites() -> Set<String> {
-        return favoritesManager.getSelections()
+    func updateConnected(_ state: SelectionState) {
+        connectedManager.updateSelections(state)
+    }
+    
+    func getConnected() -> Set<String> {
+        return connectedManager.getSelections()
     }
 }
