@@ -8,6 +8,7 @@
 
 import UIKit
 import Tiguer
+import ChameleonFramework
 
 class ProductCell: UICollectionViewCell {
 
@@ -15,6 +16,7 @@ class ProductCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var nameView: UIView!
     
     var productId: String = ""
     
@@ -28,7 +30,13 @@ class ProductCell: UICollectionViewCell {
     
     lazy var dynamicFavoriteState: DynamicValue<SelectionState?> = DynamicValue(connectedState)
     
-    override func awakeFromNib() {}
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 8.0
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = FlatBlack().cgColor
+        self.connectButton.backgroundColor = FlatGrayDark()
+        self.connectButton.layer.cornerRadius = 8.0
+    }
     
     @IBAction func connectButtonPressed(_ sender: Any) {
         if let connectedState = connectedState {

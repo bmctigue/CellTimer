@@ -12,6 +12,8 @@ final class ProductsViewController: UIViewController {
     
     static let controlsColor = UIColor.red
     
+    @IBOutlet weak var collectionViewContainerView: UIView!
+    
     lazy var connectedButton = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(connectButtonPressed(_:)))
     
     var filterState: ProductFilterState = .all
@@ -26,6 +28,7 @@ final class ProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGray
+        self.setStatusBarStyle(.lightContent)
         connectedButton.tintColor = ProductsViewController.controlsColor
         self.navigationItem.rightBarButtonItem = connectedButton
         add(collectionViewController)

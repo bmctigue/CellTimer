@@ -26,8 +26,10 @@ enum Products {
         }
         
         func run(completionHandler: VCBuilderBlock) {
+            let navigationController = UINavigationController()
             let controller = ProductsViewController(with: collectionViewController)
-            completionHandler(controller)
+            navigationController.add(controller)
+            completionHandler(navigationController)
         }
     }
 }

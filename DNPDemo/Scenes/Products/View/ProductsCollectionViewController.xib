@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="MN9-ia-XDP">
-                    <rect key="frame" x="20" y="44" width="374" height="818"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cbh-F1-fMS">
                         <size key="itemSize" width="50" height="50"/>
@@ -34,10 +34,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MN9-ia-XDP" secondAttribute="trailing" constant="20" id="Iv2-gI-NZH"/>
-                <constraint firstItem="MN9-ia-XDP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ToQ-T7-DwI"/>
-                <constraint firstItem="MN9-ia-XDP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bo8-ef-56Z"/>
-                <constraint firstItem="MN9-ia-XDP" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="kpF-FJ-QP2"/>
+                <constraint firstItem="MN9-ia-XDP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MaS-LR-gqX"/>
+                <constraint firstItem="MN9-ia-XDP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="44" id="RbD-wV-vbP"/>
+                <constraint firstItem="MN9-ia-XDP" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="XN2-bs-av6"/>
+                <constraint firstItem="MN9-ia-XDP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fTm-El-pOW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140.57971014492756" y="123.88392857142857"/>

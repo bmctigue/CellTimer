@@ -6,7 +6,7 @@
     },
     {
         "id": "2",
-        "name": "Free Government & Settlement Money",
+        "name": "Free Government Money",
         "text": "Fantastic.",
     },
     {
@@ -73,5 +73,10 @@
         "id": "15",
         "name": "Appeal College Fees",
         "text": "Lower your college costs.",
+    },
+    {
+        "id": "16",
+        "name": "Free Settlement Money",
+        "text": "Fantastic.",
     }
 ]

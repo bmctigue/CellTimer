@@ -8,6 +8,7 @@
 
 import UIKit
 import Tiguer
+import ChameleonFramework
 
 class ProductsCollectionViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class ProductsCollectionViewController: UIViewController {
     
     var viewModels = [ViewModel]()
     var collectionViewDatasource: CollectionViewDataSource<ViewModel>?
+    var productColors = [String: UIColor]()
     lazy var loadingViewController = LoadingViewController()
     
     private var interactor: InteractorProtocol
@@ -33,6 +35,7 @@ class ProductsCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.delegate = self
         self.collectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellName)
         
         self.addDataSource()
@@ -57,6 +60,9 @@ class ProductsCollectionViewController: UIViewController {
     }
     
     func updateTableView(_ models: [ViewModel]) {
+        if productColors.isEmpty {
+            self.productColors = generateProductColors(models)
+        }
         self.collectionViewDatasource?.models = models
         self.collectionView.reloadData()
     }
@@ -67,5 +73,22 @@ class ProductsCollectionViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         return nil
+    }
+}
+
+extension ProductsCollectionViewController {
+    func generateProductColors(_ models: [ViewModel]) -> [String: UIColor] {
+        var colors = [String: UIColor]()
+        var usedColors: Set<UIColor> = [FlatGrayDark(), FlatWhiteDark()]
+        for model in models {
+            var color = RandomFlatColorWithShade(.dark)
+            while usedColors.contains(color) {
+                color = RandomFlatColorWithShade(.dark)
+            }
+            usedColors.insert(color)
+            colors[model.selectionId] = color
+        }
+        print(colors)
+        return colors
     }
 }
