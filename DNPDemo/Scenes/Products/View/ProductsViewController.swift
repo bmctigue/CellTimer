@@ -10,11 +10,13 @@ import Tiguer
 
 final class ProductsViewController: UIViewController {
     
-    static let controlsColor = UIColor.red
+    static let controlsColor = UIColor.white
     
     @IBOutlet weak var collectionViewContainerView: UIView!
     
     lazy var connectedButton = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(connectButtonPressed(_:)))
+    
+    lazy var infoButton = UIBarButtonItem(image: UIImage(named: "Cog"), style: .plain, target: self, action: #selector(infoButtonPressed(_:)))
     
     var filterState: ProductFilterState = .all
     var collectionViewController: ProductsCollectionViewController
@@ -30,7 +32,9 @@ final class ProductsViewController: UIViewController {
         self.view.backgroundColor = UIColor.lightGray
         self.setStatusBarStyle(.lightContent)
         connectedButton.tintColor = ProductsViewController.controlsColor
+        infoButton.tintColor = ProductsViewController.controlsColor
         self.navigationItem.rightBarButtonItem = connectedButton
+        self.navigationItem.leftBarButtonItem = infoButton
         add(collectionViewController)
     }
     
