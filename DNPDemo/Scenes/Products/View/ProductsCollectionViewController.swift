@@ -40,6 +40,8 @@ class ProductsCollectionViewController: UIViewController {
         
         self.addDataSource()
         
+        NotificationCenter.default.addObserver(self, selector:  #selector(deviceDidRotate), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
+        
         let dynamicModels = presenter.getDynamicModels()
         dynamicModels.addObserver(self) { [weak self] in
             self?.updateTableView(dynamicModels.value)
@@ -69,6 +71,11 @@ class ProductsCollectionViewController: UIViewController {
     
     func updateFilterState(_ state: ProductFilterState) {
         presenter.filterModelsByState(state)
+    }
+    
+    @objc func deviceDidRotate() {
+        self.updateCollectionScrollDirection()
+        refreshTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {

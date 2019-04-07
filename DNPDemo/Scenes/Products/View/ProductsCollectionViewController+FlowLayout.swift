@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Tiguer
 
 let padding = 20.0
-let defaultWidth = CGFloat(50.0)
+let defaultWidth = CGFloat(200.0)
 let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
 
 extension ProductsCollectionViewController : UICollectionViewDelegateFlowLayout {
@@ -18,28 +19,17 @@ extension ProductsCollectionViewController : UICollectionViewDelegateFlowLayout 
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = collectionView.bounds.width
+        let screenHeight = collectionView.bounds.height
         
-        var width: CGFloat
+        var width: CGFloat = defaultWidth
         
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            if screenHeight >= screenWidth {
-                width = ((screenWidth - CGFloat(padding * 3))/2.0)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            if Tiguer.DeviceInfo.Orientation.isLandscape {
+                width = screenHeight - 44.0 - CGFloat(padding * 2)
             } else {
-                width = screenHeight - CGFloat(padding * 2)
+                width = ((screenWidth - CGFloat(padding * 3))/2.0)
             }
-        case .pad:
-            width = 200.0
-        case .unspecified:
-            width = defaultWidth
-        case .tv:
-            width = defaultWidth
-        case .carPlay:
-            width = defaultWidth
-        @unknown default:
-            width = 200.0
         }
         
         return CGSize(width: width, height: width)
@@ -55,5 +45,15 @@ extension ProductsCollectionViewController : UICollectionViewDelegateFlowLayout 
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+    
+    func updateCollectionScrollDirection() {
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            if UIDevice.current.userInterfaceIdiom == .phone && Tiguer.DeviceInfo.Orientation.isLandscape {
+                layout.scrollDirection = .horizontal
+            } else {
+                layout.scrollDirection = .vertical
+            }
+        }
     }
 }
