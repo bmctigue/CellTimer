@@ -28,7 +28,7 @@ class ProductCell: UICollectionViewCell {
         }
     }
     
-    lazy var dynamicFavoriteState: DynamicValue<SelectionState?> = DynamicValue(connectedState)
+    lazy var dynamicConnectedState: DynamicValue<SelectionState?> = DynamicValue(connectedState)
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 8.0
@@ -52,10 +52,10 @@ class ProductCell: UICollectionViewCell {
     func connectedStateChanged(_ state: SelectionState) {
         switch state {
         case .selected(let productId):
-            dynamicFavoriteState.value = .selected(productId)
+            dynamicConnectedState.value = .selected(productId)
             connectButton.setTitle("Disconnect", for: .normal)
         case .unSelected(let productId):
-            dynamicFavoriteState.value = .unSelected(productId)
+            dynamicConnectedState.value = .unSelected(productId)
             connectButton.setTitle("Connect", for: .normal)
         }
     }

@@ -88,7 +88,6 @@ extension ProductsCollectionViewController {
             usedColors.insert(color)
             colors[model.selectionId] = color
         }
-        print(colors)
         return colors
     }
 }

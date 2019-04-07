@@ -44,7 +44,7 @@ extension Products {
                         }
                     }
                     self.main.dispatch {
-                        completionHandler(self.viewModels)
+                        completionHandler(resultModels)
                     }
                 }
             }
