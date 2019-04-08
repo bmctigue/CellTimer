@@ -17,10 +17,6 @@ extension Products {
         private var filterState: ProductFilterState = .all
         private lazy var connectedManager = Products.SelectionManager<Product>()
         
-        public override init(_ models: [Model] = [Model](), main: Dispatching = AsyncQueue.main, background: Dispatching = AsyncQueue.background) {
-            super.init(models, main: main, background: background)
-        }
-        
         override var baseViewModels: [ViewModel] {
             var resultModels = [ViewModel]()
             let productModels = models as! [Product]
