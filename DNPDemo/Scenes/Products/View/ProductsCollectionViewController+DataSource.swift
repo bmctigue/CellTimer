@@ -13,10 +13,12 @@ extension ProductsCollectionViewController {
     func addDataSource() {
         self.collectionViewDatasource = CollectionViewDataSource(models: viewModels, reuseIdentifier: cellName) { (model: ViewModel, cell: UICollectionViewCell) in
             let cell = cell as! ProductCell
+            print("cell: \(model.name), state: \(model.productState)")
             cell.productId = model.selectionId
             cell.nameLabel.text = model.name
             cell.nameView.backgroundColor = self.productColors[model.selectionId]
-            cell.productState = model.productState
+            cell.productState = self.presenter.getProductState(model.productId)
+            cell.progressView.progress = model.dynamicProgress.value
             cell.dynamicProductState.addObserver(self) {
                 if let state = cell.dynamicProductState.value {
                     self.presenter.updateProductState(model.productId, state: state)
@@ -31,8 +33,9 @@ extension ProductsCollectionViewController {
                 let progress = model.dynamicProgress.value
                 if progress <= 0 {
                     cell.goToNextProductState()
+                } else {
+                    cell.progressView.progress = progress
                 }
-                cell.progressView.progress = progress
             }
         }
         self.collectionView.dataSource = collectionViewDatasource
