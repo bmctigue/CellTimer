@@ -35,13 +35,15 @@ extension Products {
             background.dispatch { [weak self] in
                 if let self = self {
                     var resultModels = self.viewModels
-                    
+                    var selected: Set<String>
                     if self.filterState == .selected {
-                        resultModels = resultModels.filter {
-                            let model = $0 as! ProductViewModel
-                            let selections = self.getSelected()
-                            return selections.contains(model.selectionId)
-                        }
+                        selected = self.getPurchased()
+                    } else {
+                        selected = self.getAvailable()
+                    }
+                    resultModels = resultModels.filter {
+                        let model = $0 as! ProductViewModel
+                        return selected.contains(model.selectionId)
                     }
                     
                     resultModels = resultModels.map { [weak self] in
@@ -65,14 +67,24 @@ extension Products.Presenter {
         self.updateViewModelsInBackground()
     }
     
-    func getSelected() -> Set<String> {
-        var selected = Set<String>()
+    func getPurchased() -> Set<String> {
+        var purchased = Set<String>()
         for (key,value) in productStateHash {
             if value == .sold {
-                selected.insert(key)
+                purchased.insert(key)
             }
         }
-        return selected
+        return purchased
+    }
+    
+    func getAvailable() -> Set<String> {
+        var available = Set<String>()
+        for (key,value) in productStateHash {
+            if value != .sold {
+                available.insert(key)
+            }
+        }
+        return available
     }
     
     func updateProductState(_ modelId: String, state: ProductState) {
