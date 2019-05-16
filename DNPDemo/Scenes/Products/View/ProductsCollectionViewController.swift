@@ -75,7 +75,6 @@ class ProductsCollectionViewController: UIViewController {
     
     @objc func deviceDidRotate() {
         self.updateCollectionScrollDirection()
-        refreshTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
