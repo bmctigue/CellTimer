@@ -41,6 +41,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nf2-lX-4Pn">
                         <rect key="frame" x="0.0" y="100" width="200" height="100"/>
                         <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="mDr-6H-NVc">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="CcH-jx-leR"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAP-RE-IJL">
                                 <rect key="frame" x="50" y="35" width="100" height="30"/>
                                 <constraints>
@@ -49,15 +57,18 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Disconnect"/>
+                                <state key="normal" title="Going Twice"/>
                                 <connections>
-                                    <action selector="connectButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Kws-LV-T5r"/>
+                                    <action selector="bidButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hPS-Nj-dCs"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iAP-RE-IJL" firstAttribute="centerX" secondItem="Nf2-lX-4Pn" secondAttribute="centerX" id="75s-xO-8o9"/>
+                            <constraint firstItem="mDr-6H-NVc" firstAttribute="top" secondItem="Nf2-lX-4Pn" secondAttribute="top" id="Fi4-tF-9pL"/>
+                            <constraint firstAttribute="trailing" secondItem="mDr-6H-NVc" secondAttribute="trailing" id="VV7-8G-P2J"/>
+                            <constraint firstItem="mDr-6H-NVc" firstAttribute="leading" secondItem="Nf2-lX-4Pn" secondAttribute="leading" id="dBy-Nq-yAy"/>
                             <constraint firstItem="iAP-RE-IJL" firstAttribute="centerY" secondItem="Nf2-lX-4Pn" secondAttribute="centerY" id="nMI-ch-gnY"/>
                         </constraints>
                     </view>
@@ -77,9 +88,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="50" height="89"/>
             <connections>
-                <outlet property="connectButton" destination="iAP-RE-IJL" id="ot0-Oh-Iof"/>
+                <outlet property="bidButton" destination="iAP-RE-IJL" id="lgU-Xa-sQz"/>
                 <outlet property="nameLabel" destination="xCH-2x-B2e" id="UnK-ih-ewc"/>
                 <outlet property="nameView" destination="mhj-Yx-Lej" id="XzT-Ud-opb"/>
+                <outlet property="progressView" destination="mDr-6H-NVc" id="Fl3-7F-eoG"/>
             </connections>
             <point key="canvasLocation" x="14.492753623188406" y="93.080357142857139"/>
         </collectionViewCell>

@@ -13,3 +13,10 @@ enum ProductFilterState {
     case all
     case connected
 }
+
+enum ProductState {
+    case bid
+    case once
+    case twice
+    case sold
+}
