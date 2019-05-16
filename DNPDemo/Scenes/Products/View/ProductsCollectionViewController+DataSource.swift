@@ -20,7 +20,19 @@ extension ProductsCollectionViewController {
             cell.dynamicProductState.addObserver(self) {
                 if let state = cell.dynamicProductState.value {
                     self.presenter.updateProductState(model.productId, state: state)
+                    if state == .sold {
+                        model.cancelTimer()
+                    } else {
+                        model.resetTimer()
+                    }
                 }
+            }
+            model.dynamicProgress.addObserver(self) {
+                let progress = model.dynamicProgress.value
+                if progress <= 0 {
+                    cell.goToNextProductState()
+                }
+                cell.progressView.progress = progress
             }
         }
         self.collectionView.dataSource = collectionViewDatasource

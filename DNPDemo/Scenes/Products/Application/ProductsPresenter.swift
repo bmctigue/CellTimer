@@ -24,7 +24,7 @@ extension Products {
             var resultModels = [ViewModel]()
             let productModels = models as! [Product]
             for model in productModels {
-                let displayedModel = Products.ViewModel(productId: model.productId, name: model.name, text: model.text, productState: .bid)
+                let displayedModel = Products.ViewModel(productId: model.productId, name: model.name, text: model.text)
                 resultModels.append(displayedModel as! ViewModel)
                 updateProductState(model.productId, state: .bid)
             }
@@ -45,7 +45,7 @@ extension Products {
                     }
                     
                     resultModels = resultModels.map { [weak self] in
-                        var model = $0 as! ProductViewModel
+                        let model = $0 as! ProductViewModel
                         model.productState = self?.getProductState(model.productId) ?? .bid
                         return model as! ViewModel
                     }

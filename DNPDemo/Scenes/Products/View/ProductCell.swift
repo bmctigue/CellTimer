@@ -13,7 +13,9 @@ import ChameleonFramework
 class ProductCell: UICollectionViewCell {
     
     static let bidText = "Bid"
-    static let sellText = "Sell"
+    static let onceText = "Going Once"
+    static let twiceText = "Going Twice"
+    static let sellText = "Sold"
 
     typealias ViewModel = Products.ViewModel
     
@@ -44,6 +46,10 @@ class ProductCell: UICollectionViewCell {
     }
     
     @IBAction func bidButtonPressed(_ sender: Any) {
+       self.goToNextProductState()
+    }
+    
+    func goToNextProductState() {
         if let state = productState {
             switch state {
             case .bid:
@@ -66,10 +72,10 @@ class ProductCell: UICollectionViewCell {
             bidButton.setTitle(ProductCell.bidText, for: .normal)
         case .once:
             progressView.progressTintColor = .flatOrange
-            bidButton.setTitle(ProductCell.bidText, for: .normal)
+            bidButton.setTitle(ProductCell.onceText, for: .normal)
         case .twice:
             progressView.progressTintColor = .flatRed
-            bidButton.setTitle(ProductCell.bidText, for: .normal)
+            bidButton.setTitle(ProductCell.twiceText, for: .normal)
         case .sold:
             progressView.progressTintColor = .flatGray
             bidButton.setTitle(ProductCell.sellText, for: .normal)
