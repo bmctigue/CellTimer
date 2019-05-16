@@ -10,8 +10,8 @@ import UIKit
 
 extension ProductsViewController {
     
-    @IBAction func connectButtonPressed(_ sender: Any) {
-        self.filterState = filterState == .all ? .connected : .all
+    @IBAction func selectedButtonPressed(_ sender: Any) {
+        self.filterState = filterState == .all ? .selected : .all
         filterStateChanged(filterState)
     }
     
@@ -19,9 +19,9 @@ extension ProductsViewController {
         collectionViewController.updateFilterState(state)
         switch state {
         case .all:
-            connectedButton.title = "Connected"
-        case .connected:
-            connectedButton.title = "All"
+            selectedButton.title = "Purchased"
+        case .selected:
+            selectedButton.title = "Shop"
         }
     }
 }

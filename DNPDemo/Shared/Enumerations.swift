@@ -11,7 +11,7 @@ import Tiguer
 
 enum ProductFilterState {
     case all
-    case connected
+    case selected
 }
 
 enum ProductState {

@@ -14,6 +14,8 @@ extension Products {
         let name: String
         let text: String
         
+        var productState: ProductState
+        
         var selectionId: String {
             return productId
         }

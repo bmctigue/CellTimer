@@ -16,10 +16,10 @@ extension ProductsCollectionViewController {
             cell.productId = model.selectionId
             cell.nameLabel.text = model.name
             cell.nameView.backgroundColor = self.productColors[model.selectionId]
-            cell.selectedState = self.presenter.getConnected().contains(model.selectionId) ? SelectionState.selected(model.selectionId) : SelectionState.unSelected(model.selectionId)
-            cell.dynamicSelectedState.addObserver(self) {
-                if let state = cell.dynamicSelectedState.value {
-                    self.presenter.updateConnected(state)
+            cell.productState = model.productState
+            cell.dynamicProductState.addObserver(self) {
+                if let state = cell.dynamicProductState.value {
+                    self.presenter.updateProductState(model.productId, state: state)
                 }
             }
         }

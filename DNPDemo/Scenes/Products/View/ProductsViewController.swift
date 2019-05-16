@@ -14,7 +14,7 @@ final class ProductsViewController: UIViewController {
     
     @IBOutlet weak var collectionViewContainerView: UIView!
     
-    lazy var connectedButton = UIBarButtonItem(image: UIImage(named: "connections"), style: .plain, target: self, action: #selector(connectButtonPressed(_:)))
+    lazy var selectedButton = UIBarButtonItem(title: "Purchased", style: .plain, target: self, action: #selector(selectedButtonPressed(_:)))
     
     lazy var infoButton = UIBarButtonItem(image: UIImage(named: "cog"), style: .plain, target: self, action: #selector(infoButtonPressed(_:)))
     
@@ -24,16 +24,16 @@ final class ProductsViewController: UIViewController {
     init(with collectionViewController: ProductsCollectionViewController) {
         self.collectionViewController = collectionViewController
         super.init(nibName: nil, bundle: nil)
-        self.title = "DoNotPay"
+        self.title = "TopHatter"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGray
         self.setStatusBarStyle(.lightContent)
-        connectedButton.tintColor = ProductsViewController.controlsColor
+        selectedButton.tintColor = ProductsViewController.controlsColor
         infoButton.tintColor = ProductsViewController.controlsColor
-        self.navigationItem.rightBarButtonItem = connectedButton
+        self.navigationItem.rightBarButtonItem = selectedButton
         self.navigationItem.leftBarButtonItem = infoButton
         add(collectionViewController)
     }

@@ -11,6 +11,9 @@ import Tiguer
 import ChameleonFramework
 
 class ProductCell: UICollectionViewCell {
+    
+    static let bidText = "Bid"
+    static let sellText = "Sell"
 
     typealias ViewModel = Products.ViewModel
     
@@ -20,7 +23,6 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var progressView: UIProgressView!
     
     var productId: String = ""
-    var selectedState: SelectionState = .unSelected("")
     
     var productState: ProductState? {
         didSet {
@@ -30,7 +32,7 @@ class ProductCell: UICollectionViewCell {
         }
     }
     
-    lazy var dynamicSelectedState: DynamicValue<SelectionState?> = DynamicValue(selectedState)
+    lazy var dynamicProductState: DynamicValue<ProductState?> = DynamicValue(productState)
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 8.0
@@ -39,12 +41,11 @@ class ProductCell: UICollectionViewCell {
         self.bidButton.layer.cornerRadius = 8.0
         self.bidButton.layer.borderWidth = 1.0
         self.bidButton.layer.borderColor = FlatGrayDark().cgColor
-        self.productState = .bid
     }
     
     @IBAction func bidButtonPressed(_ sender: Any) {
-        if let productState = productState {
-            switch productState {
+        if let state = productState {
+            switch state {
             case .bid:
                 self.productState = .once
             case .once:
@@ -54,6 +55,7 @@ class ProductCell: UICollectionViewCell {
             case .sold:
                 self.productState = .bid
             }
+            dynamicProductState.value = productState
         }
     }
     
@@ -61,24 +63,17 @@ class ProductCell: UICollectionViewCell {
         switch state {
         case .bid:
             progressView.progressTintColor = .flatGreen
-            resetProgressView()
+            bidButton.setTitle(ProductCell.bidText, for: .normal)
         case .once:
             progressView.progressTintColor = .flatOrange
-            resetProgressView()
+            bidButton.setTitle(ProductCell.bidText, for: .normal)
         case .twice:
             progressView.progressTintColor = .flatRed
-            resetProgressView()
+            bidButton.setTitle(ProductCell.bidText, for: .normal)
         case .sold:
-            dynamicSelectedState.value = .selected(productId)
-            bidButton.setTitle("Sell", for: .normal)
-            progressView.isHidden = true
+            progressView.progressTintColor = .flatGray
+            bidButton.setTitle(ProductCell.sellText, for: .normal)
         }
-    }
-    
-    func resetProgressView() {
-        dynamicSelectedState.value = .unSelected(productId)
-        bidButton.setTitle("Bid", for: .normal)
-        progressView.isHidden = false
         progressView.progress = 1.0
     }
 }
