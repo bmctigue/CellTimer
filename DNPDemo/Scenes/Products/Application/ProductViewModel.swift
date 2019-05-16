@@ -21,6 +21,8 @@ extension Products {
         var endTime: CFTimeInterval?
         let animationDuration = 15.0
         
+        private lazy var stateHashQueue = DispatchQueue(label: "ProductStateHash")
+        
         var selectionId: String {
             return productId
         }
@@ -43,13 +45,6 @@ extension Products {
             resetTimer()
         }
         
-        func resetTimer() {
-            progress = 1.0
-            startTime = CACurrentMediaTime()
-            endTime = animationDuration + startTime!
-            createTimer()
-        }
-        
         static func == (lhs: Products.ViewModel, rhs: Products.ViewModel) -> Bool {
             return lhs.productId == rhs.productId
         }
@@ -57,6 +52,13 @@ extension Products {
 }
 
 extension Products.ViewModel {
+    func resetTimer() {
+        progress = 1.0
+        startTime = CACurrentMediaTime()
+        endTime = animationDuration + startTime!
+        createTimer()
+    }
+    
     func createTimer() {
         if timer == nil {
             let timer = Timer(timeInterval: 0.1,
