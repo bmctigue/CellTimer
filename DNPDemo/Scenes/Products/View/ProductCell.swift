@@ -34,7 +34,7 @@ class ProductCell: UICollectionViewCell {
         }
     }
     
-    lazy var dynamicProductState: DynamicValue<ProductState?> = DynamicValue(productState)
+    lazy var dynamicState: DynamicValue<ProductState?> = DynamicValue(productState)
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 8.0
@@ -46,23 +46,7 @@ class ProductCell: UICollectionViewCell {
     }
     
     @IBAction func bidButtonPressed(_ sender: Any) {
-       self.goToNextProductState()
-    }
-    
-    func goToNextProductState() {
-        if let state = productState {
-            switch state {
-            case .bid:
-                self.productState = .once
-            case .once:
-                self.productState = .twice
-            case .twice:
-                self.productState = .sold
-            case .sold:
-                self.productState = .bid
-            }
-            dynamicProductState.value = productState
-        }
+       dynamicState.value = productState
     }
     
     func productStateChanged(_ state: ProductState) {

@@ -14,7 +14,6 @@ extension Products {
         let productId: String
         let name: String
         let text: String
-        var productState: ProductState
         
         var timer: Timer?
         var startTime: CFTimeInterval?
@@ -23,8 +22,12 @@ extension Products {
         
         private lazy var stateHashQueue = DispatchQueue(label: "ProductStateHash")
         
-        var selectionId: String {
-            return productId
+        var productState: ProductState? {
+            didSet {
+                if let productState = productState {
+                    self.dynamicState.value = productState
+                }
+            }
         }
         
         var progress: Float? {
@@ -36,6 +39,7 @@ extension Products {
         }
         
         lazy var dynamicProgress: DynamicValue<Float> = DynamicValue(progress ?? 1.0)
+        lazy var dynamicState: DynamicValue<ProductState> = DynamicValue(productState ?? .bid)
         
         init(productId: String, name: String, text: String, state: ProductState = .bid) {
             self.productId = productId
@@ -53,6 +57,7 @@ extension Products {
 
 extension Products.ViewModel {
     func resetTimer() {
+        cancelTimer()
         progress = 1.0
         startTime = CACurrentMediaTime()
         endTime = animationDuration + startTime!
@@ -86,9 +91,33 @@ extension Products.ViewModel {
         let now = CACurrentMediaTime()
         
         if now >= endTime {
-            cancelTimer()
+            if productState == .sold {
+                cancelTimer()
+            } else {
+                progress = 1.0
+                goToNextState(productState)
+            }
         }
         
         progress = 1.0 - (Float(now - startTime) / Float(animationDuration))
+    }
+    
+    func goToNextState(_ state: ProductState?) {
+        if let state = state {
+            switch state {
+            case .bid:
+                self.productState = .once
+                resetTimer()
+            case .once:
+                self.productState = .twice
+                resetTimer()
+            case .twice:
+                self.productState = .sold
+                cancelTimer()
+            case .sold:
+                self.productState = .bid
+                resetTimer()
+            }
+        }
     }
 }

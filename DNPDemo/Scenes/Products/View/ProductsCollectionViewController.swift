@@ -92,7 +92,7 @@ extension ProductsCollectionViewController {
                 color = RandomFlatColorWithShade(.dark)
             }
             usedColors.insert(color)
-            colors[model.selectionId] = color
+            colors[model.productId] = color
         }
         return colors
     }

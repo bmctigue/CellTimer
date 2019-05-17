@@ -26,7 +26,6 @@ extension Products {
             for model in productModels {
                 let displayedModel = Products.ViewModel(productId: model.productId, name: model.name, text: model.text)
                 resultModels.append(displayedModel as! ViewModel)
-                updateProductState(model.productId, state: .bid)
             }
             return resultModels
         }
@@ -35,21 +34,10 @@ extension Products {
             background.dispatch { [weak self] in
                 if let self = self {
                     var resultModels = self.viewModels
-                    var selected: Set<String>
-                    if self.filterState == .selected {
-                        selected = self.getPurchased()
-                    } else {
-                        selected = self.getAvailable()
-                    }
+                    
                     resultModels = resultModels.filter {
                         let model = $0 as! ProductViewModel
-                        return selected.contains(model.selectionId)
-                    }
-                    
-                    resultModels = resultModels.map { [weak self] in
-                        let model = $0 as! ProductViewModel
-                        model.productState = self?.getProductState(model.productId) ?? .bid
-                        return model as! ViewModel
+                        return self.filterState == .selected ? model.productState == .sold : model.productState != .sold
                     }
                     
                     self.main.dispatch {
@@ -65,39 +53,5 @@ extension Products.Presenter {
     func filterModelsByState(_ state: ProductFilterState) {
         self.filterState = state
         self.updateViewModelsInBackground()
-    }
-    
-    func getPurchased() -> Set<String> {
-        var purchased = Set<String>()
-        for (key,value) in productStateHash {
-            if value == .sold {
-                purchased.insert(key)
-            }
-        }
-        return purchased
-    }
-    
-    func getAvailable() -> Set<String> {
-        var available = Set<String>()
-        for (key,value) in productStateHash {
-            if value != .sold {
-                available.insert(key)
-            }
-        }
-        return available
-    }
-    
-    func updateProductState(_ modelId: String, state: ProductState) {
-        stateHashQueue.async { [weak self] in
-            self?.productStateHash[modelId] = state
-        }
-    }
-    
-    func getProductState(_ modelId: String) -> ProductState? {
-        var state: ProductState?
-        stateHashQueue.sync {
-            state = productStateHash[modelId]
-        }
-        return state
     }
 }
