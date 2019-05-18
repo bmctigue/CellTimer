@@ -34,7 +34,6 @@ extension ProductsCollectionViewController {
                 if cell?.productId == model?.productId {
                     if let progress = model?.dynamicProgress.value {
                         cell?.progressView.progress = progress
-                        print("cell id: \(String(describing: cell?.productId)), model: \(String(describing: model?.productId))")
                     }
                 }
             }
