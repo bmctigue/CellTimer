@@ -19,17 +19,24 @@ extension ProductsCollectionViewController {
             cell.productState = model.productState
             cell.progressView.progress = model.dynamicProgress.value
             
-            cell.dynamicState.addObserver(self) {
-                if let state = cell.dynamicState.value {
-                    model.goToNextState(state)
+            cell.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
+                if let state = cell?.dynamicState.value {
+                    model?.goToNextState(state)
                 }
             }
-            model.dynamicState.addObserver(self) {
-                cell.productState = model.dynamicState.value
+            model.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
+                if cell?.productId == model?.productId {
+                    cell?.productState = model?.dynamicState.value
+                }
             }
             
-            model.dynamicProgress.addObserver(self) {
-                cell.progressView.progress = model.dynamicProgress.value
+            model.dynamicProgress.addSoloObserver(self) { [weak cell, weak model] in
+                if cell?.productId == model?.productId {
+                    if let progress = model?.dynamicProgress.value {
+                        cell?.progressView.progress = progress
+                        print("cell id: \(String(describing: cell?.productId)), model: \(String(describing: model?.productId))")
+                    }
+                }
             }
         }
         self.collectionView.dataSource = collectionViewDatasource
