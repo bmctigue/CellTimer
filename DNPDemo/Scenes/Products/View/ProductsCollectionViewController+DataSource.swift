@@ -17,11 +17,13 @@ extension ProductsCollectionViewController {
             cell.nameLabel.text = model.name
             cell.nameView.backgroundColor = self.productColors[model.productId]
             cell.productState = model.productState
-            cell.progressView.progress = model.productState == .sold ? 1.0 : model.dynamicProgress.value
+            cell.progressView.progress = model.productId == cell.productId ? model.dynamicProgress.value : 1.0
             cell.reuse = {
-                model.dynamicState.dispose()
-                model.dynamicProgress.dispose()
-                cell.dynamicState.dispose()
+                if model.productId != cell.productId {
+                    model.dynamicState.dispose()
+                    model.dynamicProgress.dispose()
+                    cell.dynamicState.dispose()
+                }
             }
             
             cell.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
