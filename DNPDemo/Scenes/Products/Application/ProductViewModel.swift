@@ -59,9 +59,11 @@ extension Products.ViewModel {
     func resetTimer() {
         cancelTimer()
         progress = 1.0
-        startTime = CACurrentMediaTime()
-        endTime = animationDuration + startTime!
-        createTimer()
+        if productState != .sold {
+            startTime = CACurrentMediaTime()
+            endTime = animationDuration + startTime!
+            createTimer()
+        }
     }
     
     func createTimer() {

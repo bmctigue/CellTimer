@@ -35,6 +35,7 @@ class ProductCell: UICollectionViewCell {
     }
     
     lazy var dynamicState: DynamicValue<ProductState?> = DynamicValue(productState)
+    var reuse: (() -> Void)?
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 8.0
@@ -43,6 +44,11 @@ class ProductCell: UICollectionViewCell {
         self.bidButton.layer.cornerRadius = 8.0
         self.bidButton.layer.borderWidth = 1.0
         self.bidButton.layer.borderColor = FlatGrayDark().cgColor
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        reuse?()
     }
     
     @IBAction func bidButtonPressed(_ sender: Any) {
@@ -66,4 +72,6 @@ class ProductCell: UICollectionViewCell {
         }
         progressView.progress = 1.0
     }
+    
+    
 }

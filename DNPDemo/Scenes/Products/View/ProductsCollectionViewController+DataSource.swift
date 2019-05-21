@@ -17,7 +17,12 @@ extension ProductsCollectionViewController {
             cell.nameLabel.text = model.name
             cell.nameView.backgroundColor = self.productColors[model.productId]
             cell.productState = model.productState
-            cell.progressView.progress = model.dynamicProgress.value
+            cell.progressView.progress = model.productState == .sold ? 1.0 : model.dynamicProgress.value
+            cell.reuse = {
+                model.dynamicState.dispose()
+                model.dynamicProgress.dispose()
+                cell.dynamicState.dispose()
+            }
             
             cell.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
                 if let state = cell?.dynamicState.value {
@@ -25,16 +30,12 @@ extension ProductsCollectionViewController {
                 }
             }
             model.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
-                if cell?.productId == model?.productId {
-                    cell?.productState = model?.dynamicState.value
-                }
+                cell?.productState = model?.dynamicState.value
             }
             
             model.dynamicProgress.addSoloObserver(self) { [weak cell, weak model] in
-                if cell?.productId == model?.productId {
-                    if let progress = model?.dynamicProgress.value {
-                        cell?.progressView.progress = progress
-                    }
+                if let progress = model?.dynamicProgress.value {
+                    cell?.progressView.progress = progress
                 }
             }
         }
