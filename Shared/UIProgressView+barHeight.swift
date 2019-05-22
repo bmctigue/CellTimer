@@ -1,6 +1,6 @@
 //
 //  UIProgressView+barHeight.swift
-//  DNPDemo
+//  CellTimer
 //
 //  Created by Bruce McTigue on 5/16/19.
 //  Copyright © 2019 tiguer. All rights reserved.

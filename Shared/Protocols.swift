@@ -1,6 +1,6 @@
 //
 //  Protocols.swift
-//  DNPDemo
+//  CellTimer
 
 //
 //  Created by Bruce McTigue on 12/26/18.

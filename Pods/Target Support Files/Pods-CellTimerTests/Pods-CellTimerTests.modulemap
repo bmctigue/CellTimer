@@ -1,0 +1,6 @@
+framework module Pods_CellTimerTests {
+  umbrella header "Pods-CellTimerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

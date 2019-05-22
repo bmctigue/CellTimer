@@ -1,14 +1,14 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'DNPDemo' do
+target 'CellTimer' do
     pod 'Unbox'
     pod 'Promis'
     pod 'Tiguer', :git => 'https://github.com/bmctigue/Tiguer.git'
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 end
 
-target 'DNPDemoTests' do
+target 'CellTimerTests' do
     inherit! :search_paths
 end
 
