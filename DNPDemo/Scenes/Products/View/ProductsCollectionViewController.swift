@@ -65,6 +65,9 @@ class ProductsCollectionViewController: UIViewController {
         if productColors.isEmpty {
             self.productColors = generateProductColors(models)
         }
+        for model in models {
+            collectionView.register(UINib(nibName:"ProductCell", bundle: nil), forCellWithReuseIdentifier: "\(model)")
+        }
         self.collectionViewDatasource?.models = models
         self.collectionView.reloadData()
     }

@@ -10,7 +10,7 @@ import UIKit
 import Tiguer
 
 extension Products {
-    final class ViewModel: Equatable {
+    final class ViewModel: Hashable, CustomStringConvertible {
         let productId: String
         let name: String
         let text: String
@@ -21,6 +21,10 @@ extension Products {
         let animationDuration = 15.0
         
         private lazy var stateHashQueue = DispatchQueue(label: "ProductStateHash")
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(productId)
+        }
         
         var productState: ProductState? {
             didSet {
@@ -36,6 +40,10 @@ extension Products {
                     self.dynamicProgress.value = progress
                 }
             }
+        }
+        
+        var description: String {
+            return "\(name), \(productId)"
         }
         
         lazy var dynamicProgress: DynamicValue<Float> = DynamicValue(progress ?? 1.0)
