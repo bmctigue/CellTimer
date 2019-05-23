@@ -16,8 +16,6 @@ class ProductCell: UICollectionViewCell {
     static let onceText = "Going Once"
     static let twiceText = "Going Twice"
     static let sellText = "Sold"
-
-    typealias ViewModel = Products.ViewModel
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bidButton: UIButton!

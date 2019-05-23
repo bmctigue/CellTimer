@@ -15,10 +15,10 @@ extension Products {
         let name: String
         let text: String
         
-        var timer: Timer?
-        var startTime: CFTimeInterval?
-        var endTime: CFTimeInterval?
-        let animationDuration = 15.0
+        private var timer: Timer?
+        private var startTime: CFTimeInterval?
+        private var endTime: CFTimeInterval?
+        private let animationDuration = 15.0
         
         private lazy var stateHashQueue = DispatchQueue(label: "ProductStateHash")
         
