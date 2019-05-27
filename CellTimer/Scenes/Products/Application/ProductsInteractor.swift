@@ -1,6 +1,6 @@
 //
 //  ProductsInteractor.swift
-//  RicosCafe
+//  CellTimer
 //
 //  Created by Bruce McTigue on 12/27/18.
 //  Copyright © 2018 tiguer. All rights reserved.

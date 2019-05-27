@@ -63,7 +63,7 @@
             BlueprintIdentifier = "A860EB342257AA3700F9AE93"
             BuildableName = "CellTimer.app"
             BlueprintName = "CellTimer"
-            ReferencedContainer = "container:DNPDemo.xcodeproj">
+            ReferencedContainer = "container:CellTimer.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>

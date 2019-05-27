@@ -1,6 +1,6 @@
 //
 //  BlueColorTheme.swift
-//  RicosCafe
+//  CellTimer
 //
 //  Created by Bruce McTigue on 1/4/19.
 //  Copyright © 2019 tiguer. All rights reserved.

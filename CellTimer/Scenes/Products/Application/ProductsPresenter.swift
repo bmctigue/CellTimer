@@ -1,6 +1,6 @@
 //
 //  ProductsPresenter.swift
-//  RicosCafe
+//  CellTimer
 //
 //  Created by Bruce McTigue on 12/31/18.
 //  Copyright © 2018 tiguer. All rights reserved.
@@ -16,9 +16,6 @@ extension Products {
         
         private var filterState: ProductFilterState = .all
         private lazy var connectedManager = Products.SelectionManager<Product>()
-        private lazy var productStateHash = [String:ProductState]()
-        
-        private lazy var stateHashQueue = DispatchQueue(label: "ProductStateHash")
         
         override var baseViewModels: [ViewModel] {
             var resultModels = [ViewModel]()
