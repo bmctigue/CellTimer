@@ -41,6 +41,7 @@
 		A88A5F912259A20200271BF0 /* ProductsCollectionViewController+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88A5F902259A20200271BF0 /* ProductsCollectionViewController+FlowLayout.swift */; };
 		A8C04CDB22595A530038050F /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C04CDA22595A530038050F /* Enumerations.swift */; };
 		A8C04CDD22595A8A0038050F /* ProductsSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C04CDC22595A8A0038050F /* ProductsSelectionManager.swift */; };
+		A8E4EDE2229C066C003F1F31 /* ProductsCollectionViewController+ProductColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E4EDE1229C066C003F1F31 /* ProductsCollectionViewController+ProductColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		A88A5F902259A20200271BF0 /* ProductsCollectionViewController+FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductsCollectionViewController+FlowLayout.swift"; sourceTree = "<group>"; };
 		A8C04CDA22595A530038050F /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		A8C04CDC22595A8A0038050F /* ProductsSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsSelectionManager.swift; sourceTree = "<group>"; };
+		A8E4EDE1229C066C003F1F31 /* ProductsCollectionViewController+ProductColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductsCollectionViewController+ProductColors.swift"; sourceTree = "<group>"; };
 		B3D21E8B8B6DB2D66C203634 /* Pods-CellTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellTimer.release.xcconfig"; path = "Target Support Files/Pods-CellTimer/Pods-CellTimer.release.xcconfig"; sourceTree = "<group>"; };
 		BD9ADF566CB3865D4CDCBA91 /* Pods-CellTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellTimerTests.release.xcconfig"; path = "Target Support Files/Pods-CellTimerTests/Pods-CellTimerTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5E62D6726CD473EA00D5F54 /* Pods-CellTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellTimer.debug.xcconfig"; path = "Target Support Files/Pods-CellTimer/Pods-CellTimer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				A88A5F82225995E300271BF0 /* ProductsViewController+Filter.swift */,
 				A88A5F7F225994ED00271BF0 /* ProductsViewController.xib */,
 				A88A5F84225996F100271BF0 /* ProductsCollectionViewController.swift */,
+				A8E4EDE1229C066C003F1F31 /* ProductsCollectionViewController+ProductColors.swift */,
 				A88A5F882259975E00271BF0 /* ProductsCollectionViewController+DataSource.swift */,
 				A88A5F902259A20200271BF0 /* ProductsCollectionViewController+FlowLayout.swift */,
 				A88A5F8D22599F5100271BF0 /* ProductsCollectionViewController.xib */,
@@ -542,6 +545,7 @@
 				A875B558225A499B001BBA9F /* ProductsViewController+Info.swift in Sources */,
 				A8142B492258F24100D4F7AC /* ProductsService.swift in Sources */,
 				A8142B512258F28E00D4F7AC /* ProductsPresenter.swift in Sources */,
+				A8E4EDE2229C066C003F1F31 /* ProductsCollectionViewController+ProductColors.swift in Sources */,
 				A88A5F83225995E300271BF0 /* ProductsViewController+Filter.swift in Sources */,
 				A8C04CDB22595A530038050F /* Enumerations.swift in Sources */,
 				A8142B552258F3E500D4F7AC /* AppBuilder.swift in Sources */,

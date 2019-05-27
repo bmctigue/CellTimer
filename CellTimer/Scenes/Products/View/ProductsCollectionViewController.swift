@@ -8,14 +8,13 @@
 
 import UIKit
 import Tiguer
-import ChameleonFramework
+
 
 class ProductsCollectionViewController: UIViewController {
     
     typealias ViewModel = Products.ViewModel
     
     let cellName = "ProductCell"
-    let cellNibName = "ProductCollectionViewCell"
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,8 +35,6 @@ class ProductsCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.delegate = self
-        self.collectionView.register(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellName)
-        
         self.addDataSource()
         
         NotificationCenter.default.addObserver(self, selector:  #selector(deviceDidRotate), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
@@ -66,7 +63,7 @@ class ProductsCollectionViewController: UIViewController {
             self.productColors = generateProductColors(models)
         }
         for model in models {
-            collectionView.register(UINib(nibName:"ProductCell", bundle: nil), forCellWithReuseIdentifier: "\(model)")
+            collectionView.register(UINib(nibName:cellName, bundle: nil), forCellWithReuseIdentifier: "\(model)")
         }
         self.collectionViewDatasource?.models = models
         self.collectionView.reloadData()
@@ -82,21 +79,5 @@ class ProductsCollectionViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         return nil
-    }
-}
-
-extension ProductsCollectionViewController {
-    func generateProductColors(_ models: [ViewModel]) -> [String: UIColor] {
-        var colors = [String: UIColor]()
-        var usedColors: Set<UIColor> = [FlatGrayDark(), FlatWhiteDark()]
-        for model in models {
-            var color = RandomFlatColorWithShade(.dark)
-            while usedColors.contains(color) {
-                color = RandomFlatColorWithShade(.dark)
-            }
-            usedColors.insert(color)
-            colors[model.productId] = color
-        }
-        return colors
     }
 }
