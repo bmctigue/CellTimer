@@ -67,6 +67,26 @@
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A860EB482257AA3B00F9AE93"
+               BuildableName = "CellTimerTests.xctest"
+               BlueprintName = "CellTimerTests"
+               ReferencedContainer = "container:CellTimer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A860EB532257AA3B00F9AE93"
+               BuildableName = "CellTimerUITests.xctest"
+               BlueprintName = "CellTimerUITests"
+               ReferencedContainer = "container:CellTimer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
