@@ -9,20 +9,21 @@
 import UIKit
 import Tiguer
 
-
 class ProductsCollectionViewController: UIViewController {
     
     typealias ViewModel = Products.ViewModel
     
     let cellName = "ProductCell"
+    let animationDelay = 2.0
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var viewModels = [ViewModel]()
-    var collectionViewDatasource: CollectionViewDataSource<ViewModel>?
+    var collectionViewDatasource: CollectionViewDataSource<ViewModel>!
     var productColors = [String: UIColor]()
     lazy var loadingViewController = LoadingViewController()
     
+    private var dataUpdater: CollectionViewDataDiff<ViewModel>?
     private var interactor: InteractorProtocol
     var presenter: Products.Presenter<Product, ViewModel>
     
@@ -34,8 +35,9 @@ class ProductsCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.delegate = self
+        collectionView.delegate = self
         self.addDataSource()
+        self.dataUpdater = CollectionViewDataDiff(collectionView, dataSource: collectionViewDatasource)
         
         NotificationCenter.default.addObserver(self, selector:  #selector(deviceDidRotate), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
         
@@ -65,8 +67,7 @@ class ProductsCollectionViewController: UIViewController {
         for model in models {
             collectionView.register(UINib(nibName:cellName, bundle: nil), forCellWithReuseIdentifier: "\(model)")
         }
-        self.collectionViewDatasource?.models = models
-        self.collectionView.reloadData()
+        dataUpdater?.data = models
     }
     
     func updateFilterState(_ state: ProductFilterState) {

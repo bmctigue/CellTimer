@@ -19,13 +19,17 @@ extension ProductsCollectionViewController {
             cell.productState = model.productState
             cell.progressView.progress = model.productId == cell.productId ? model.dynamicProgress.value : 1.0
             
-            cell.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
+            cell.dynamicState.addSoloObserver(self) { [weak self, weak cell, weak model] in
                 if let state = cell?.dynamicState.value {
                     model?.goToNextState(state)
+                    self?.refreshFilterState(state)
                 }
             }
-            model.dynamicState.addSoloObserver(self) { [weak cell, weak model] in
-                cell?.productState = model?.dynamicState.value
+            model.dynamicState.addSoloObserver(self) { [weak self, weak cell, weak model] in
+                if let state = model?.dynamicState.value {
+                    cell?.productState = state
+                    self?.refreshFilterState(state)
+                }
             }
             
             model.dynamicProgress.addSoloObserver(self) { [weak cell, weak model] in
@@ -35,6 +39,14 @@ extension ProductsCollectionViewController {
             }
         }
         self.collectionView.dataSource = collectionViewDatasource
+    }
+    
+    func refreshFilterState(_ state: ProductState) {
+        if state == .bid || state == .sold {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationDelay) {
+                self.presenter.filterModelsByState(self.presenter.getFilterState())
+            }
+        }
     }
 }
 

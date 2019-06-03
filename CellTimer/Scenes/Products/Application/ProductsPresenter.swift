@@ -43,6 +43,10 @@ extension Products {
                 }
             }
         }
+        
+        func getFilterState() -> ProductFilterState {
+            return filterState
+        }
     }
 }
 

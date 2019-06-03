@@ -24,7 +24,7 @@ final class ProductsViewController: UIViewController {
     init(with collectionViewController: ProductsCollectionViewController) {
         self.collectionViewController = collectionViewController
         super.init(nibName: nil, bundle: nil)
-        self.title = "TopHatter"
+        self.title = "CellTimer"
     }
     
     override func viewDidLoad() {

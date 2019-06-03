@@ -8,6 +8,7 @@
 
 import UIKit
 import Tiguer
+import DifferenceKit
 
 extension Products {
     final class ViewModel: Hashable, CustomStringConvertible {
@@ -60,6 +61,8 @@ extension Products {
         }
     }
 }
+
+extension Products.ViewModel: Differentiable {}
 
 extension Products.ViewModel {
     func resetTimer() {
