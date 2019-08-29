@@ -1,6 +1,6 @@
 {
   "name": "Tiguer",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "summary": "Common source files.",
   "description": "Common source files. Sourced from John Sundell mostly.",
   "license": "MIT",
@@ -8,11 +8,11 @@
     "Bruce McTigue": "bmctigue@tiguer.com"
   },
   "platforms": {
-    "ios": "12.2"
+    "ios": "12.4"
   },
   "source": {
     "git": "https://github.com/bmctigue/Tiguer.git",
-    "tag": "0.0.29"
+    "tag": "0.0.30"
   },
   "source_files": "Tiguer",
   "exclude_files": "Classes/Exclude",

@@ -15,7 +15,6 @@ final class ProductsViewController: UIViewController {
     @IBOutlet weak var collectionViewContainerView: UIView!
     
     lazy var selectedButton = UIBarButtonItem(title: "Purchased", style: .plain, target: self, action: #selector(selectedButtonPressed(_:)))
-    
     lazy var infoButton = UIBarButtonItem(image: UIImage(named: "cog"), style: .plain, target: self, action: #selector(infoButtonPressed(_:)))
     
     var filterState: ProductFilterState = .all

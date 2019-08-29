@@ -2,14 +2,14 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - DifferenceKit (1.1.2):
-    - DifferenceKit/Core (= 1.1.2)
-    - DifferenceKit/UIKitExtension (= 1.1.2)
-  - DifferenceKit/Core (1.1.2)
-  - DifferenceKit/UIKitExtension (1.1.2):
+  - DifferenceKit (1.1.3):
+    - DifferenceKit/Core (= 1.1.3)
+    - DifferenceKit/UIKitExtension (= 1.1.3)
+  - DifferenceKit/Core (1.1.3)
+  - DifferenceKit/UIKitExtension (1.1.3):
     - DifferenceKit/Core
-  - Promis (2.1.0)
-  - Tiguer (0.0.29):
+  - Promis (2.2.0)
+  - Tiguer (0.0.30):
     - Promis
   - Unbox (4.0.0)
 
@@ -37,16 +37,16 @@ CHECKOUT OPTIONS:
     :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
     :git: https://github.com/ViccAlexander/Chameleon.git
   Tiguer:
-    :commit: 776a01d83df12cceaf1cbb6aa71616f228d5816c
+    :commit: d14a5c9c48cca0cd38d75db0bafb67bfda3adca6
     :git: https://github.com/bmctigue/Tiguer.git
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  DifferenceKit: 3a1cff9ac9a9cdf2a3f205671067797e83c3f066
-  Promis: e46360c7b23daca97ea22b2ca59324d71c3fd306
-  Tiguer: 7396611fc982eb887913ff8d7fa027283a02dece
+  DifferenceKit: 5018791b6c1fc839921a3c171a0a539ace6ea60c
+  Promis: 4b7c710108427d361e29a2be352dc0eff5315456
+  Tiguer: cd95eff46182ac469fd2f5896c25b908699c491c
   Unbox: d2677af8fde59a30141e02981b11cb6a0e3b6bc5
 
-PODFILE CHECKSUM: a0e1f19273aa6b119d7a63238f713b5a32100630
+PODFILE CHECKSUM: b7150e6a8daf4f8252449fb04088ae4d717fd186
 
 COCOAPODS: 1.6.0
